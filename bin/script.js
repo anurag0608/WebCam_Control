@@ -36,7 +36,7 @@ const args = yargs
                    choices:[0,1],
                    type: "number", demandOption: true })
     .argv;
-sudo.exec('powershell set-ExecutionPolicy RemoteSigned -Scope CurrentUser',options,(error,stdout,stderr){
+sudo.exec('powershell set-ExecutionPolicy RemoteSigned -Scope CurrentUser',options,(error,stdout,stderr)=>{
   if (error) throw error;
   sudo.exec(`powershell -file ${modes[args.s].value}`, options,
     function(error, stdout, stderr) {
