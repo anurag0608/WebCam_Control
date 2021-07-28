@@ -17,6 +17,7 @@ const disable_path = "C:\\webcam_control\\scripts\\disable.ps1";
   }
 // console.log(__dirname)
 const yargs = require("yargs");
+const { stdout, stderr } = require('process');
 const modes = [
                 {
                 "mode":"Disable",
@@ -35,12 +36,15 @@ const args = yargs
                    choices:[0,1],
                    type: "number", demandOption: true })
     .argv;
-sudo.exec(`powershell -file ${modes[args.s].value}`, options,
-  function(error, stdout, stderr) {
-    if (error) throw error;
-    console.log(`WebCam Status : ${modes[args.s].mode}`);
-  }
-);
+sudo.exec('powershell set-ExecutionPolicy RemoteSigned -Scope CurrentUser',options,(error,stdout,stderr){
+  if (error) throw error;
+  sudo.exec(`powershell -file ${modes[args.s].value}`, options,
+    function(error, stdout, stderr) {
+      if (error) throw error;
+      console.log(`WebCam Status : ${modes[args.s].mode}`);
+    }
+  );
+})
 const create_script = (script1, script2)=>{
     fs.copyFile(__dirname+"/enable.ps1", script1, (err) => {
       if (err) throw err;
