@@ -6,19 +6,13 @@ const options = {
 };
 const fs = require('fs')
 const default_path = "C:\\webcam_control\\scripts\\";
-
+const enable_path = "C:\\webcam_control\\scripts\\enable.ps1";
+const disable_path = "C:\\webcam_control\\scripts\\disable.ps1";
 // synchronous calls
-  if (!fs.existsSync(default_path)) {
+  if(!fs.existsSync(enable_path) || !fs.existsSync(disable_path)){
     fs.mkdir(default_path, { recursive: true }, (err) => {
       if (err) throw err;
-      fs.copyFile(__dirname+"/disable.ps1", default_path+"/disable.ps1", (err) => {
-        if (err) throw err;
-        // disable.ps1 created
-        fs.copyFile(__dirname+"/enable.ps1", default_path+"/enable.ps1", (err) => {
-          if (err) throw err;
-        // enable.ps1 created
-        });
-      });
+       create_script(enable_path, disable_path)
     })
   }
 // console.log(__dirname)
@@ -47,3 +41,12 @@ sudo.exec(`powershell -file ${modes[args.s].value}`, options,
     console.log(`WebCam Status : ${modes[args.s].mode}`);
   }
 );
+const create_script = (script1, script2)=>{
+    fs.copyFile(__dirname+"/enable.ps1", script1, (err) => {
+      if (err) throw err;
+      fs.copyFile(__dirname+"/enable.ps1", script2, (err) => {
+        if (err) throw err;
+          // both script created
+      });  
+    });
+}
