@@ -7,6 +7,9 @@
     "sudo-prompt": "^9.2.1",
     "yargs": "^17.0.1"
   },
+  "repository": {
+    "url":"https://github.com/anurag0608/WebCam_Control.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./bin/script.js"
