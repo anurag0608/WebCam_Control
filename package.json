@@ -1,5 +1,5 @@
 {
-  "name": "webcam_control",
+  "name": "webcam",
   "version": "1.0.0",
   "description": "disable/enable web_cam for security",
   "main": "bin/script.js",
