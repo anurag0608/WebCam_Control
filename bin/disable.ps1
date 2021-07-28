@@ -1,0 +1,1 @@
+Disable-PnpDevice -confirm:$false -InstanceId (Get-PnpDevice -FriendlyName *webcam* -Class Camera -Status OK).InstanceId
