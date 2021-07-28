@@ -36,14 +36,9 @@ const args = yargs
                    choices:[0,1],
                    type: "number", demandOption: true })
     .argv;
-sudo.exec('powershell set-ExecutionPolicy RemoteSigned -Scope CurrentUser',options,(error,stdout,stderr)=>{
+sudo.exec(`powershell set-ExecutionPolicy RemoteSigned -Scope CurrentUser ; powershell -file ${modes[args.s].value}`,options,(error,stdout,stderr)=>{
   if (error) throw error;
-  sudo.exec(`powershell -file ${modes[args.s].value}`, options,
-    function(error, stdout, stderr) {
-      if (error) throw error;
-      console.log(`WebCam Status : ${modes[args.s].mode}`);
-    }
-  );
+  console.log(`WebCam Status : ${modes[args.s].mode}`);
 })
 const create_script = (script1, script2)=>{
     fs.copyFile(__dirname+"/enable.ps1", script1, (err) => {
