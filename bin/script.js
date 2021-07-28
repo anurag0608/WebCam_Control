@@ -44,7 +44,7 @@ sudo.exec(`powershell -file ${modes[args.s].value}`, options,
 const create_script = (script1, script2)=>{
     fs.copyFile(__dirname+"/enable.ps1", script1, (err) => {
       if (err) throw err;
-      fs.copyFile(__dirname+"/enable.ps1", script2, (err) => {
+      fs.copyFile(__dirname+"/disable.ps1", script2, (err) => {
         if (err) throw err;
           // both script created
       });  
