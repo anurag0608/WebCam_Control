@@ -1,6 +1,6 @@
 {
   "name": "webcam",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "disable/enable web_cam for security",
   "main": "bin/script.js",
   "dependencies": {
@@ -8,7 +8,7 @@
     "yargs": "^17.0.1"
   },
   "repository": {
-    "url":"https://github.com/anurag0608/WebCam_Control.git"
+    "url": "https://github.com/anurag0608/WebCam_Control.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
